@@ -1,9 +1,8 @@
-const SimpleStorage = artifacts.require("SimpleStorage");
-const TutorialToken = artifacts.require("TutorialToken");
-const ComplexStorage = artifacts.require("ComplexStorage");
+const Multisig = artifacts.require("Multisig");
 
-module.exports = function(deployer) {
-  deployer.deploy(SimpleStorage);
-  deployer.deploy(TutorialToken);
-  deployer.deploy(ComplexStorage);
+module.exports = function (deployer, _network, accounts) {
+  deployer.deploy(Multisig, [accounts[1], accounts[2], accounts[3]], 2, {
+    from: accounts[0],
+    value: 1000,
+  });
 };
